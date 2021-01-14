@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'myFirstDjangoProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydjangodb',
+        'USER': 'postgres',
+        'PASSWORD': 'Tsunami9',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -101,6 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

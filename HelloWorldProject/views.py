@@ -9,14 +9,14 @@ def hello(request):
 
 def form_handler(request):
      template = loader.get_template('answer.html')
-     if request.COOKIES.get('user_name') == None:
+     if request.session.get('user_name') == None:
         name = request.POST.get('user_name')
+        request.session['user_name'] = name
         context = {'name': name}
         response = HttpResponse(template.render(context))
-        response.set_cookie('user_name', name, 300)
         return response
      else:
-        name = request.COOKIES['user_name']
+        name = request.session.get('user_name')
         context = {'name': name}
         response = HttpResponse(template.render(context))
         return response
